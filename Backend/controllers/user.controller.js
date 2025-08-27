@@ -3,41 +3,50 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken";
 
 
-export const register=async(req,res)=>{
-    try {
-        const{fullname,email,phoneNumber,password,role}=req.body;
-        if(!fullname||!email||!phoneNumber||!password||!role){
-            return res.status(400).json({
-                message:"something is missing",
-                success:false
-            })
-        }
-        const user = await User.findOne({email});
-        if(user){
-            return res.status(400).json({
-                message:"user already exists",
-                success:false
-            })
-        }
-        const hashedPassword=await bcrypt.hash(password,10);
-        
-        await User.create({
-            fullname,
-            email,
-            phoneNumber,
-            password:hashedPassword,
-            role
-        })
-        return res.status(201).json({
-            message:"Account created successfully",
-            success:true
-        })
-        
-    } catch (error) {
-        console.log(error);
-        
+export const register = async (req, res) => {
+  try {
+    const { fullname, email, phoneNumber, password, role } = req.body;
+    console.log("Incoming data:", req.body);
+
+    if (!fullname || !email || !phoneNumber || !password || !role) {
+      return res.status(400).json({
+        message: "something is missing",
+        success: false,
+      });
     }
-}
+
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({
+        message: "user already exists",
+        success: false,
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await User.create({
+      fullname,
+      email,
+      phoneNumber,
+      password: hashedPassword,
+      role,
+    });
+
+    return res.status(201).json({
+      message: "Account created successfully",
+      success: true,
+    });
+  } catch (error) {
+    console.error("Register error:", error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+      success: false,
+      error: error.message, // optional: send error details during dev
+    });
+  }
+};
+
 export const login=async(req,res)=>{
     try {
         const{email,password,role}=req.body;
