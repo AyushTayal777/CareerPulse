@@ -20,9 +20,9 @@ const Navbar = () => {
 
                 <div className="flex items-center gap-6">
                     <ul className="flex font-medium items-center gap-5">
-                        <li className="cursor-pointer hover:text-[#F83002] transition">Home</li>
-                        <li className="cursor-pointer hover:text-[#F83002] transition">Jobs</li>
-                        <li className="cursor-pointer hover:text-[#F83002] transition">Browser</li>
+                        <li className="cursor-pointer hover:text-[#F83002] transition"><Link to='/'>Home</Link></li>
+                        <li className="cursor-pointer hover:text-[#F83002] transition"><Link to='/jobs'>Jobs</Link></li>
+                        <li className="cursor-pointer hover:text-[#F83002] transition"><Link to='/browse'>Browse</Link></li>
                     </ul>
                     {
                         !user ? (
