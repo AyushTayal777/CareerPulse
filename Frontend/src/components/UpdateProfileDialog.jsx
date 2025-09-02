@@ -18,7 +18,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     email: user?.email || '',
     phoneNumber: user?.phoneNumber || '',
     bio: user?.profile?.bio || '',
-    skills: user?.profile?.skills || [], // always keep as array
+    skills: user?.profile?.skills || [], 
     file: user?.profile?.resume || null,
   })
 
@@ -49,6 +49,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     }
 
     try {
+      setLoading(true)
       const res = await axios.post(`${USER_API_END_POINT}/profile/update`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
@@ -61,9 +62,11 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     } catch (error) {
       console.log('error', error)
       toast.error(error?.response?.data?.message || 'Something went wrong')
+    } finally {
+      setLoading(false)
     }
 
-    setLoading(false)
+    
     setOpen(false)
   }
 
