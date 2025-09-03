@@ -11,6 +11,7 @@ import Jobs from './components/Jobs'
 import Browse from './components/Browse'
 import Profile from './components/Profile'
 import JobDescription from './components/JobDescription'
+import { Toaster } from 'react-hot-toast'
 
 const appRouter=createBrowserRouter([
   {
@@ -48,6 +49,7 @@ function App(){
   return (
     <>
       <RouterProvider router={appRouter}/>
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   )
 }
