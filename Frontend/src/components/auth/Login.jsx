@@ -10,7 +10,7 @@ import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading, setUser } from '@/redux/authSlice'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Mail, Lock, User, Users, Eye, EyeOff } from 'lucide-react'
 
 const Login = () => {
     const [input, setInput] = useState({
@@ -18,7 +18,8 @@ const Login = () => {
         password: "",
         role: "",
     });
-    const { loading,user } = useSelector(store => store.auth);
+    const [showPassword, setShowPassword] = useState(false);
+    const { loading, user } = useSelector(store => store.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -48,70 +49,188 @@ const Login = () => {
             dispatch(setLoading(false));
         }
     }
-    useEffect(()=>{
-        if(user){
+
+    useEffect(() => {
+        if (user) {
             navigate("/");
         }
-    },[])
+    }, [])
+
     return (
-        <div>
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
             <Navbar />
-            <div className='flex items-center justify-center max-w-7xl mx-auto'>
-                <form onSubmit={submitHandler} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
-                    <h1 className='font-bold text-xl mb-5'>Login</h1>
-                    <div className='my-2'>
-                        <Label>Email</Label>
-                        <Input
-                            type="email"
-                            value={input.email}
-                            name="email"
-                            onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
-                        />
+            
+            {/* Background Elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+            </div>
+
+            <div className='relative flex items-center justify-center min-h-screen px-4 pt-20'>
+                <div className="w-full max-w-md">
+                    {/* Header */}
+                    <div className="text-center mb-8">
+                        <div className="bg-gradient-to-r from-purple-600 to-pink-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <User className="w-8 h-8 text-white" />
+                        </div>
+                        <h1 className='text-3xl font-bold text-gray-800 mb-2'>Welcome Back</h1>
+                        <p className="text-gray-600">Sign in to your CareerPulse account</p>
                     </div>
 
-                    <div className='my-2'>
-                        <Label>Password</Label>
-                        <Input
-                            type="password"
-                            value={input.password}
-                            name="password"
-                            onChange={changeEventHandler}
-                            placeholder="patel@gmail.com"
-                        />
-                    </div>
-                    <div className='flex items-center justify-between'>
-                        <RadioGroup className="flex items-center gap-4 my-5">
-                            <div className="flex items-center space-x-2">
+                    {/* Login Form */}
+                    <form onSubmit={submitHandler} className='bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl'>
+                        {/* Email Field */}
+                        <div className='mb-6'>
+                            <Label className="text-gray-700 font-semibold mb-2 block">Email Address</Label>
+                            <div className="relative">
+                                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                                 <Input
-                                    type="radio"
-                                    name="role"
-                                    value="student"
-                                    checked={input.role === 'student'}
+                                    type="email"
+                                    value={input.email}
+                                    name="email"
                                     onChange={changeEventHandler}
-                                    className="cursor-pointer"
+                                    placeholder="Enter your email"
+                                    className="pl-12 h-12 border-gray-200 rounded-xl focus:border-purple-400 focus:ring-purple-400 transition-all duration-300"
+                                    required
                                 />
-                                <Label htmlFor="r1">Student</Label>
                             </div>
-                            <div className="flex items-center space-x-2">
+                        </div>
+
+                        {/* Password Field */}
+                        <div className='mb-6'>
+                            <Label className="text-gray-700 font-semibold mb-2 block">Password</Label>
+                            <div className="relative">
+                                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                                 <Input
-                                    type="radio"
-                                    name="role"
-                                    value="recruiter"
-                                    checked={input.role === 'recruiter'}
+                                    type={showPassword ? "text" : "password"}
+                                    value={input.password}
+                                    name="password"
                                     onChange={changeEventHandler}
-                                    className="cursor-pointer"
+                                    placeholder="Enter your password"
+                                    className="pl-12 pr-12 h-12 border-gray-200 rounded-xl focus:border-purple-400 focus:ring-purple-400 transition-all duration-300"
+                                    required
                                 />
-                                <Label htmlFor="r2">Recruiter</Label>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                                >
+                                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                                </button>
                             </div>
-                        </RadioGroup>
+                        </div>
+
+                        {/* Role Selection */}
+                        <div className='mb-8'>
+                            <Label className="text-gray-700 font-semibold mb-4 block">I am a</Label>
+                            <RadioGroup className="grid grid-cols-2 gap-4">
+                                <div className={`relative cursor-pointer transition-all duration-300 ${
+                                    input.role === 'student' ? 'ring-2 ring-purple-400' : ''
+                                }`}>
+                                    <input
+                                        type="radio"
+                                        name="role"
+                                        value="student"
+                                        checked={input.role === 'student'}
+                                        onChange={changeEventHandler}
+                                        className="sr-only"
+                                        id="student"
+                                    />
+                                    <label 
+                                        htmlFor="student"
+                                        className={`flex items-center justify-center p-4 border-2 rounded-xl transition-all duration-300 ${
+                                            input.role === 'student' 
+                                                ? 'border-purple-400 bg-purple-50 text-purple-700' 
+                                                : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
+                                        }`}
+                                    >
+                                        <User className="w-5 h-5 mr-2" />
+                                        Student
+                                    </label>
+                                </div>
+                                <div className={`relative cursor-pointer transition-all duration-300 ${
+                                    input.role === 'recruiter' ? 'ring-2 ring-purple-400' : ''
+                                }`}>
+                                    <input
+                                        type="radio"
+                                        name="role"
+                                        value="recruiter"
+                                        checked={input.role === 'recruiter'}
+                                        onChange={changeEventHandler}
+                                        className="sr-only"
+                                        id="recruiter"
+                                    />
+                                    <label 
+                                        htmlFor="recruiter"
+                                        className={`flex items-center justify-center p-4 border-2 rounded-xl transition-all duration-300 ${
+                                            input.role === 'recruiter' 
+                                                ? 'border-purple-400 bg-purple-50 text-purple-700' 
+                                                : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
+                                        }`}
+                                    >
+                                        <Users className="w-5 h-5 mr-2" />
+                                        Recruiter
+                                    </label>
+                                </div>
+                            </RadioGroup>
+                        </div>
+
+                        {/* Submit Button */}
+                        {loading ? (
+                            <Button 
+                                disabled 
+                                className="w-full h-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl shadow-lg mb-6"
+                            >
+                                <Loader2 className='mr-2 h-5 w-5 animate-spin' />
+                                Signing in...
+                            </Button>
+                        ) : (
+                            <Button 
+                                type="submit" 
+                                className="w-full h-12 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] mb-6"
+                            >
+                                Sign In
+                            </Button>
+                        )}
+
+                        {/* Sign Up Link */}
+                        <div className='text-center'>
+                            <span className='text-gray-600'>Don't have an account? </span>
+                            <Link 
+                                to="/signup" 
+                                className='font-semibold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent hover:from-purple-700 hover:to-pink-700 transition-all duration-300'
+                            >
+                                Create Account
+                            </Link>
+                        </div>
+
+                        {/* Forgot Password */}
+                        <div className='text-center mt-4'>
+                            <Link 
+                                to="/forgot-password" 
+                                className='text-sm text-gray-500 hover:text-purple-600 transition-colors duration-300'
+                            >
+                                Forgot your password?
+                            </Link>
+                        </div>
+                    </form>
+
+                    {/* Demo Credentials */}
+                    <div className="mt-8 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-white/30">
+                        <h3 className="text-sm font-semibold text-gray-700 mb-2">Demo Credentials</h3>
+                        <div className="text-xs text-gray-600 space-y-1">
+                            <div>Student: demo@student.com / password123</div>
+                            <div>Recruiter: demo@recruiter.com / password123</div>
+                        </div>
                     </div>
-                    {
-                        loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait </Button> : <Button type="submit" className="w-full my-4">Login</Button>
-                    }
-                    <span className='text-sm'>Don't have an account? <Link to="/signup" className='text-blue-600'>Signup</Link></span>
-                </form>
+                </div>
             </div>
+
+            <style jsx>{`
+                .animation-delay-2000 {
+                    animation-delay: 2s;
+                }
+            `}</style>
         </div>
     )
 }
