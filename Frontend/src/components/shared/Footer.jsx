@@ -9,7 +9,7 @@ const Footer = () => {
         
         {/* Brand / Logo */}
         <div className="flex-1">
-          <h2 className="text-2xl font-bold text-white">JobPortal</h2>
+          <h2 className="text-2xl font-bold text-white">CareerPulse</h2>
           <p className="mt-3 text-sm leading-relaxed max-w-xs">
             Connecting talent with opportunities. Find your dream job today and
             take the next step in your career.
@@ -47,7 +47,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 mt-8">
         <p className="text-center text-xs text-gray-400 py-4">
-          © {new Date().getFullYear()} JobPortal. All rights reserved.
+          © {new Date().getFullYear()} CareerPulse. All rights reserved.
         </p>
       </div>
     </footer>
