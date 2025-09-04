@@ -83,21 +83,21 @@ const Footer = () => {
             </h3>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/ayush685/" 
                 className="relative p-3 rounded-full border border-gray-700 hover:border-blue-400 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 group/social"
               >
                 <Linkedin size={22} />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-full opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"></div>
               </a>
               <a 
-                href="#" 
+                href="https://github.com/AyushTayal777" 
                 className="relative p-3 rounded-full border border-gray-700 hover:border-purple-400 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 group/social"
               >
                 <Github size={22} />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-full opacity-0 group-hover/social:opacity-100 transition-opacity duration-300"></div>
               </a>
               <a 
-                href="#" 
+                href="https://www.figma.com/files/team/1537502553346163208/recents-and-sharing?fuid=1537502551034793503" 
                 className="relative p-3 rounded-full border border-gray-700 hover:border-pink-400 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 group/social"
               >
                 <Figma size={22} />

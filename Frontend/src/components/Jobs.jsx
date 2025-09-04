@@ -98,7 +98,7 @@ const Jobs = () => {
                                     <Search className="w-5 h-5 text-blue-600" />
                                 </div>
                                 <div>
-                                    <div className="text-2xl font-bold text-blue-600">100+</div>
+                                    <div className="text-2xl font-bold text-blue-600">5+</div>
                                     <div className="text-blue-700 text-sm font-medium">Companies</div>
                                 </div>
                             </div>

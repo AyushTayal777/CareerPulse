@@ -5,6 +5,7 @@ import { Button } from '../ui/button'
 import CompaniesTable from './CompaniesTable'
 import { useNavigate } from 'react-router-dom'
 import useGetAllCompanies from '@/hooks/useGetAllCompanies'
+
 import { useDispatch } from 'react-redux'
 import { setSearchCompanyByText } from '@/redux/companySlice'
 import { 
@@ -76,7 +77,7 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-green-600 font-medium">Active Partners</p>
-                                        <p className="text-2xl font-bold text-green-900">--</p>
+                                        <p className="text-2xl font-bold text-green-900">5</p>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +89,7 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-purple-600 font-medium">Growth Rate</p>
-                                        <p className="text-2xl font-bold text-purple-900">--</p>
+                                        <p className="text-2xl font-bold text-purple-900">60%</p>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +101,7 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-orange-600 font-medium">Global Reach</p>
-                                        <p className="text-2xl font-bold text-orange-900">--</p>
+                                        <p className="text-2xl font-bold text-orange-900">2+ MNC</p>
                                     </div>
                                 </div>
                             </div>

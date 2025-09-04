@@ -123,7 +123,7 @@ const PostJob = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-blue-600 font-medium">Reach Candidates</p>
-                                        <p className="text-2xl font-bold text-blue-900">1000+</p>
+                                        <p className="text-2xl font-bold text-blue-900">100+</p>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@ const PostJob = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-purple-600 font-medium">Global Reach</p>
-                                        <p className="text-2xl font-bold text-purple-900">50+ Countries</p>
+                                        <p className="text-2xl font-bold text-purple-900">2+ MNC</p>
                                     </div>
                                 </div>
                             </div>

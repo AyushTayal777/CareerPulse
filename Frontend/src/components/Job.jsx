@@ -39,13 +39,7 @@ const Job = ({job}) => {
                             {isNew ? "🔥 Posted Today" : `${daysAgo} days ago`}
                         </p>
                     </div>
-                    <Button 
-                        variant="outline" 
-                        className="rounded-full border-gray-200 hover:border-red-300 hover:bg-red-50 hover:text-red-600 transition-all duration-300 group/bookmark" 
-                        size="icon"
-                    >
-                        <Bookmark className="w-4 h-4 group-hover/bookmark:fill-current transition-all duration-300" />
-                    </Button>
+                    
                 </div>
 
                 {/* Company Section */}
@@ -102,11 +96,7 @@ const Job = ({job}) => {
                     >
                         Details
                     </Button>
-                    <Button 
-                        className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-purple-200 transition-all duration-300 transform hover:scale-105"
-                    >
-                        Save For Later
-                    </Button>
+                    
                 </div>
             </div>
 

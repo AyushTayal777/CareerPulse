@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
 import { 
     MapPin, 
-    DollarSign, 
+    IndianRupee, 
     Clock, 
     Users, 
     Calendar, 
@@ -108,7 +108,7 @@ const JobDescription = () => {
                                     {singleJob?.jobType}
                                 </Badge>
                                 <Badge className="px-4 py-2 text-purple-700 bg-purple-50 font-semibold border border-purple-200 hover:bg-purple-100 transition-colors duration-200 rounded-full text-sm">
-                                    <DollarSign className="w-4 h-4 mr-2" />
+                                    <IndianRupee  className="w-4 h-4 mr-2" />
                                     {singleJob?.salary}LPA
                                 </Badge>
                             </div>
@@ -174,7 +174,7 @@ const JobDescription = () => {
                             { label: 'Role', value: singleJob?.title, icon: Briefcase, color: 'blue' },
                             { label: 'Location', value: singleJob?.location, icon: MapPin, color: 'green' },
                             { label: 'Experience', value: `${singleJob?.experience} yrs`, icon: TrendingUp, color: 'purple' },
-                            { label: 'Salary', value: `${singleJob?.salary}LPA`, icon: DollarSign, color: 'orange' },
+                            { label: 'Salary', value: `${singleJob?.salary}LPA`, icon: IndianRupee , color: 'orange' },
                             { label: 'Total Applicants', value: singleJob?.applications?.length, icon: Users, color: 'pink' },
                             { label: 'Posted Date', value: singleJob?.createdAt?.split("T")[0], icon: Calendar, color: 'indigo' }
                         ].map((item, index) => (

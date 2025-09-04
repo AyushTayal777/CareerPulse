@@ -205,24 +205,10 @@ const Login = () => {
                         </div>
 
                         {/* Forgot Password */}
-                        <div className='text-center mt-4'>
-                            <Link 
-                                to="/forgot-password" 
-                                className='text-sm text-gray-500 hover:text-purple-600 transition-colors duration-300'
-                            >
-                                Forgot your password?
-                            </Link>
-                        </div>
+                        
                     </form>
 
-                    {/* Demo Credentials */}
-                    <div className="mt-8 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-white/30">
-                        <h3 className="text-sm font-semibold text-gray-700 mb-2">Demo Credentials</h3>
-                        <div className="text-xs text-gray-600 space-y-1">
-                            <div>Student: demo@student.com / password123</div>
-                            <div>Recruiter: demo@recruiter.com / password123</div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
