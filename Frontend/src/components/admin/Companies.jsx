@@ -6,7 +6,7 @@ import CompaniesTable from './CompaniesTable'
 import { useNavigate } from 'react-router-dom'
 import useGetAllCompanies from '@/hooks/useGetAllCompanies'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setSearchCompanyByText } from '@/redux/companySlice'
 import { 
     Building2, 
@@ -24,6 +24,10 @@ const Companies = () => {
     const [input, setInput] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    
+    // Get companies from Redux store
+    const { companies } = useSelector(store => store.company);
+    const totalCompanies = companies?.length || 0;
 
     useEffect(() => {
         dispatch(setSearchCompanyByText(input));
@@ -65,7 +69,7 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-blue-600 font-medium">Total Companies</p>
-                                        <p className="text-2xl font-bold text-blue-900">--</p>
+                                        <p className="text-2xl font-bold text-blue-900">{totalCompanies}</p>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +81,7 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-green-600 font-medium">Active Partners</p>
-                                        <p className="text-2xl font-bold text-green-900">5</p>
+                                        <p className="text-2xl font-bold text-green-900">{totalCompanies}</p>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +93,9 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-purple-600 font-medium">Growth Rate</p>
-                                        <p className="text-2xl font-bold text-purple-900">60%</p>
+                                        <p className="text-2xl font-bold text-purple-900">
+                                            {totalCompanies > 0 ? '100%' : '0%'}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +107,9 @@ const Companies = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-orange-600 font-medium">Global Reach</p>
-                                        <p className="text-2xl font-bold text-orange-900">2+ MNC</p>
+                                        <p className="text-2xl font-bold text-orange-900">
+                                            {totalCompanies >= 2 ? `${totalCompanies}+ Companies` : `${totalCompanies} Company`}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -181,6 +189,9 @@ const Companies = () => {
                                 <h2 className="text-xl font-bold text-gray-900">
                                     Companies Directory
                                 </h2>
+                                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                                    {totalCompanies} {totalCompanies === 1 ? 'Company' : 'Companies'}
+                                </span>
                             </div>
                             
                             <div className="flex items-center gap-4 text-sm">
@@ -206,6 +217,7 @@ const Companies = () => {
                 <div className="mt-8 text-center">
                     <p className="text-gray-500 text-sm">
                         Manage your company partnerships and track performance metrics
+                        {totalCompanies > 0 && ` • ${totalCompanies} companies registered`}
                     </p>
                 </div>
             </div>

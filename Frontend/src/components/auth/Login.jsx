@@ -69,7 +69,7 @@ const Login = () => {
             <div className='relative flex items-center justify-center min-h-screen px-4 pt-20'>
                 <div className="w-full max-w-md">
                     {/* Header */}
-                    <div className="text-center mb-8">
+                    <div className="text-center pt-5 mb-8">
                         <div className="bg-gradient-to-r from-purple-600 to-pink-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                             <User className="w-8 h-8 text-white" />
                         </div>

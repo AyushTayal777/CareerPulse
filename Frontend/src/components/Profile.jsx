@@ -23,7 +23,7 @@ const Profile = () => {
             <Navbar />
             
             {/* Enhanced Profile Header Card */}
-            <div className='max-w-5xl mx-auto my-8 p-8'>
+            <div className='max-w-5xl mx-auto pt-24 my-8 p-8'>
                 <div className='bg-white/80 backdrop-blur-sm border border-white/50 rounded-3xl shadow-2xl overflow-hidden relative group'>
                     {/* Gradient Background */}
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl"></div>

@@ -13,8 +13,7 @@ import {
     Loader2, 
     Briefcase, 
     FileText, 
-    MapPin, 
-    DollarSign, 
+    MapPin,  
     Building2,
     Users,
     Clock,
@@ -26,7 +25,8 @@ import {
     Sparkles,
     Target,
     TrendingUp,
-    Globe
+    Globe,
+    IndianRupee
 } from 'lucide-react'
 
 const PostJob = () => {
@@ -244,7 +244,7 @@ const PostJob = () => {
                                 {/* Salary */}
                                 <div>
                                     <Label className="text-gray-700 font-semibold flex items-center gap-2 mb-3">
-                                        <DollarSign className="w-4 h-4 text-orange-600" />
+                                        <IndianRupee className="w-4 h-4 text-orange-600" />
                                         Salary
                                     </Label>
                                     <Input
@@ -253,7 +253,7 @@ const PostJob = () => {
                                         value={input.salary}
                                         onChange={changeEventHandler}
                                         className="py-3 px-4 bg-white/80 backdrop-blur-sm border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md focus:shadow-lg transition-all duration-200 focus:border-orange-300 focus:ring-4 focus:ring-orange-100"
-                                        placeholder="e.g., $80,000 - $100,000"
+                                        placeholder="e.g., 10 LPA"
                                     />
                                 </div>
 

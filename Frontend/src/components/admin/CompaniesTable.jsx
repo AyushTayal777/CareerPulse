@@ -39,6 +39,28 @@ const CompaniesTable = () => {
         });
     };
 
+    // Function to handle website visit
+    const handleVisitWebsite = (websiteUrl) => {
+        if (websiteUrl) {
+            // Ensure the URL has a protocol
+            let url = websiteUrl;
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            // Show alert if no website is provided
+            alert('No website URL available for this company');
+        }
+    };
+
+    // Function to handle view jobs navigation
+    const handleViewJobs = (companyId, companyName) => {
+        // Navigate to jobs page with company filter
+        // You can adjust this path based on your routing structure
+        navigate(`/jobs?company=${companyId}&companyName=${encodeURIComponent(companyName)}`);
+    };
+
     return (
         <div className="w-full">
             {/* Enhanced Table Container */}
@@ -123,12 +145,7 @@ const CompaniesTable = () => {
                                                     <span>{company.location}</span>
                                                 </div>
                                             )}
-                                            {company.website && (
-                                                <div className="flex items-center gap-1">
-                                                    <Globe className="w-3 h-3" />
-                                                    <span>Website</span>
-                                                </div>
-                                            )}
+                                            
                                         </div>
                                     </div>
                                 </TableCell>
@@ -170,6 +187,7 @@ const CompaniesTable = () => {
                                                 </button>
                                                 
                                                 <button
+                                                    onClick={() => handleViewJobs(company._id, company.name)}
                                                     className="w-full flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-all duration-200 text-left hover:bg-green-50 hover:text-green-700 text-gray-700"
                                                 >
                                                     <Users className="w-4 h-4" />
@@ -177,10 +195,14 @@ const CompaniesTable = () => {
                                                 </button>
                                                 
                                                 <button
+                                                    onClick={() => handleVisitWebsite(company.website)}
                                                     className="w-full flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-all duration-200 text-left hover:bg-purple-50 hover:text-purple-700 text-gray-700"
+                                                    disabled={!company.website}
                                                 >
                                                     <Globe className="w-4 h-4" />
-                                                    <span className="font-medium">Visit Website</span>
+                                                    <span className="font-medium">
+                                                        {company.website ? 'Visit Website' : 'No Website'}
+                                                    </span>
                                                 </button>
                                             </div>
                                         </PopoverContent>
