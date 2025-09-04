@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin: ['https://careerpulse-w2co.onrender.com'],
+    origin: ['https://careerpulse-1.onrender.com'],
     credentials: true
 }
 
