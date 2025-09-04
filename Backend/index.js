@@ -17,13 +17,19 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://careerpulse-1.onrender.com", // use string, not array
-  credentials: true, // allow cookies / auth headers
+  origin: "https://careerpulse-1.onrender.com",
+  credentials: true,
 }));
 
+const PORT = process.env.PORT || 8000;
 
-const PORT = process.env.PORT || 3000;
-
+// Root route for health check
+app.get('/', (req, res) => {
+    res.json({ 
+        message: "CareerPulse API is running!",
+        status: "success" 
+    });
+});
 
 // api's
 app.use("/api/v1/user", userRoute);
@@ -31,9 +37,7 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-
-
-app.listen(PORT,()=>{
+app.listen(PORT, '0.0.0.0', ()=>{
     connectDB();
     console.log(`Server running at port ${PORT}`);
 })
